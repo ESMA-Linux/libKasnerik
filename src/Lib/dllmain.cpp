@@ -8,7 +8,11 @@ FARPROC WINAPI myGetProcAddress(HMODULE hModule, LPCSTR lpProcName)
 {
 	if (HIWORD(lpProcName))
 	{
-		if (strcmp(lpProcName, "wine_server_call") == 0)
+		if(
+			(strcmp(lpProcName, "wine_server_call")      == 0) ||
+			(strcmp(lpProcName, "wine_get_version")      == 0) ||
+			(strcmp(lpProcName, "wine_get_build_id")     == 0) ||
+			(strcmp(lpProcName, "wine_get_host_version") == 0)  )
 		{
 			return NULL;
 		}
